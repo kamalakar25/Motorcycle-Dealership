@@ -1,0 +1,71 @@
+.container {
+    width: 100%;
+    max-width: 1200px; /* Ensures the container doesn’t exceed 1200px */
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.container .row:before,
+.container .row:after {
+    content: " ";
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.container .row:after {
+    clear: both;
+}
+
+.container .wrap-col {
+    margin: 10px;
+}
+
+.container .adjust-1,
+.container .adjust-2,
+.container .adjust-3,
+.container .adjust-4 {
+    display: inline-block;
+    float: left;
+}
+
+.container .adjust-1 { width: 33.33%; }
+.container .adjust-2 { width: 50%; }
+.container .adjust-3 { width: 25%; }
+.container .adjust-4 { width: 66.66%; }
+
+/* Mobile view styles */
+@media only screen and (max-width: 480px) {
+    .container .adjust-1,
+    .container .adjust-2,
+    .container .adjust-3,
+    .container .adjust-4 {
+        width: 100%; /* Stacks all columns vertically on mobile */
+    }
+
+    .container .wrap-col {
+        margin: 5px 0; /* Adjust margin to fit mobile view */
+    }
+}
+
+/* Tablet view styles */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .container .adjust-1 { width: 50%; } /* 2 columns layout */
+    .container .adjust-2 { width: 50%; } /* 2 columns layout */
+    .container .adjust-3 { width: 50%; } /* Stacks columns two by two */
+    .container .adjust-4 { width: 100%; } /* Full width for larger content */
+
+    .container .wrap-col {
+        margin: 10px 0; /* Adjust margin for tablet view */
+    }
+}

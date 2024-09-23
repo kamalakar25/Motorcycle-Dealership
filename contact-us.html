@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>Contact Us</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-image: url('https://ik.imagekit.io/0ofixtqpt/v0/b/vercel-storage.appspot.com/o/images%2Fbackground-pattern.svg?alt=media');
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      .container1 {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #2c3e50;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .contact-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: space-between;
+      }
+
+      .contact-form {
+        flex: 1 1 400px;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        animation: slideInLeft 1s ease-in-out;
+      }
+
+      .contact-info1 {
+        flex: 1 1 300px;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        animation: slideInRight 1s ease-in-out;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+
+      .error {
+        color: #e74c3c;
+        font-size: 0.9rem;
+        margin-top: 0.25rem;
+      }
+
+      #map {
+        width: 100%;
+        height: 300px;
+        border-radius: 10px;
+        margin-top: 1rem;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          transform: translateX(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          transform: translateX(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .contact-wrapper {
+          flex-direction: column;
+        }
+      }
+      nav {
+        animation: fadeIn 1s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-light">
+        <div class="container">
+          <a href="index.html" class="logo">
+            <img
+              src="images/logo.png"
+              alt="Logo"
+              class="img-fluid"
+              style="width: 120px"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#nav-collapse"
+            aria-controls="nav-collapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon bg-dark"></span>
+          </button>
+          <div id="nav-collapse" class="collapse navbar-collapse">
+            <div class="navbar-nav ms-auto pl-3">
+              <a href="Categories.html" class="nav-link text-dark"
+                >Categories</a
+              >
+              <a href="blog.html" class="nav-link text-dark">Blog</a>
+              <a href="about-us.html" class="nav-link text-dark">About</a>
+              <a href="contact-us.html" class="nav-link text-dark">Contact</a>
+              <a href="faq.html" class="nav-link text-dark">FAQ</a>
+              <a
+                href="cart.html"
+                style="color: black; font-size: 18px; margin-left: -10px"
+              >
+                <button
+                  type="button"
+                  style="
+                    border: 0px;
+                    background-color: transparent;
+                    padding-top: 4px;
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-bag-check-fill"
+                    viewBox="0 0 16 16"
+                    style="color: black; font-size: 18px"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0m-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"
+                    />
+                  </svg>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <br /><br /><br />
+    </header>
+    <div class="container1">
+      <h1>Contact Us</h1>
+      <div class="contact-wrapper">
+        <div class="contact-form">
+          <form id="contactForm">
+            <div>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+              <div class="error" id="nameError"></div>
+            </div>
+            <div>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+              <div class="error" id="emailError"></div>
+            </div>
+            <div>
+              <label for="message">Message:</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+              <div class="error" id="messageError"></div>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info1">
+          <h2>Contact Information</h2>
+          <p><strong>Email:</strong> info@cardeakler.com</p>
+          <p><strong>Phone:</strong> +80 888 88 8888</p>
+          <p><strong>Address:</strong> Ring Road, Light City</p>
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+    <style>
+      /* footer */
+
+      .wrap-footer {
+        background-color: #f3542d;
+        color: #ffffff;
+        padding: 40px 0;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .footer-content h3 {
+        color: #000000; /* Gold color for headings */
+        margin-bottom: 15px;
+        transition: transform 0.3s;
+        font-weight: bold;
+      }
+
+      .footer-content h3:hover {
+        transform: scale(1.05);
+      }
+
+      .footer-content ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .footer-content ul li {
+        margin: 8px 0;
+        transition: color 0.3s;
+      }
+
+      .footer-content ul li a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .footer-content ul li a:hover {
+        color: #f8c74d; /* Gold color on hover */
+        text-decoration: underline;
+      }
+
+      .btn-primary {
+        background-color: #007bff; /* Bootstrap primary color */
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .footer-bottom a {
+        color: #f8c74d; /* Gold color for links */
+      }
+
+      /* icons */
+
+      .social-media h3 {
+        color: #000000;
+        margin-bottom: 15px;
+        font-weight: bold;
+        transition: transform 0.3s;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Space between icons */
+      }
+
+      .social-icons a {
+        color: #ffffff; /* Icon color */
+        font-size: 24px; /* Icon size */
+        transition: color 0.3s;
+      }
+
+      .social-icons a:hover {
+        color: #f8c74d; /* Gold on hover */
+      }
+    </style>
+
+    <!------------------------ footer ----------------------->
+    <footer>
+      <div class="wrap-footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="contact-info col-sm-12 col-md-4">
+              <h3>Contact Us</h3>
+              <span>Phone: +80 888 88 8888</span><br />
+              <span>Email: info@cardeakler.com</span><br />
+              <span>Address: Ring Road, Light City</span><br />
+              <a href="contact-us.html">
+                <button class="btn btn-primary mt-2 mb-3">Get in Touch</button>
+              </a>
+            </div>
+
+            <div class="related-content col-sm-12 col-md-4">
+              <h3>Related Content</h3>
+              <ul>
+                <li><a href="blog.html">Latest Blog Posts</a></li>
+                <li><a href="faq.html">Frequently Asked Questions</a></li>
+              </ul>
+            </div>
+
+            <div class="explore col-sm-12 col-md-4">
+              <h3>Explore</h3>
+              <ul>
+                <li><a href="cart.html">My Cart</a></li>
+                <li><a href="contact-us.html">Contact Support</a></li>
+                <li><a href="Categories.html">Browse Categories</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+              </ul>
+            </div>
+            <div class="social-media col-sm-12 col-md-4">
+              <h3>Follow Us</h3>
+              <div class="social-icons">
+                <a href="https://www.facebook.com" target="_blank">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <span
+              ><strong
+                >Copyright 2024 - <a href="#">Motorcycle Dealership</a></strong
+              ></span
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+      // Initialize map
+      function initMap() {
+        const map = L.map('map').setView([12.9344, 77.6192], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        L.marker([12.9344, 77.6192])
+          .addTo(map)
+          .bindPopup('Our Location')
+          .openPopup();
+      }
+
+      // Form validation
+      document
+        .getElementById('contactForm')
+        .addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (validateForm()) {
+            alert('Form submitted successfully!');
+            this.reset();
+          }
+        });
+
+      function validateForm() {
+        let isValid = true;
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const message = document.getElementById('message');
+
+        // Name validation
+        if (name.value.trim() === '') {
+          showError('nameError', 'Name is required');
+          isValid = false;
+        } else {
+          showError('nameError', '');
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.value)) {
+          showError('emailError', 'Please enter a valid email address');
+          isValid = false;
+        } else {
+          showError('emailError', '');
+        }
+
+        // Message validation
+        if (message.value.trim() === '') {
+          showError('messageError', 'Message is required');
+          isValid = false;
+        } else {
+          showError('messageError', '');
+        }
+
+        return isValid;
+      }
+
+      function showError(id, message) {
+        document.getElementById(id).textContent = message;
+      }
+
+      // Initialize map when the page loads
+      window.onload = initMap;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

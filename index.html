@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Motorcycle Dealership</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link href="css/grid.css" type="text/css" rel="stylesheet" />
+   
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  </head>
+  <style>
+    .search-bar {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .search-results {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .search-result-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    /******************** Adding font  **********************/
+    @font-face {
+      font-family: "racing sans one";
+      src: url("RacingSansOne-Regular.ttf");
+    }
+
+    /******************** body  **********************/
+    body {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      background: #fff;
+      color: #3f3f3f;
+      font: 14px/25px Arial;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /************ header ******************/
+    .test {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    /******************** logo  **********************/
+    header .logo img {
+      display: inline-block;
+      margin: 0 auto;
+      padding: 10px;
+      max-width: 210px;
+    }
+    .logo
+
+    /******************** navigation bar **********************/
+    .menu {
+      display: inline-block;
+      float: right;
+    }
+
+    ul,
+    ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .menu ul li {
+      float: left;
+    }
+
+    .menu ul li a {
+      padding: 27px 17px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      border: 0;
+      text-transform: uppercase;
+      line-height: 1;
+      display: block;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .menu ul li:hover a {
+      background: #f3542d;
+      color: #fff;
+    }
+
+    /********** slider **************/
+    .slider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      height: 600px;
+    }
+
+    .slider img {
+      display: block;
+      position: relative;
+      z-index: 1;
+      max-height: 600px;
+      width: 100%;
+      border: 0;
+    }
+
+    .caption {
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      text-shadow: none;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px 20px 10px;
+      text-align: center;
+      margin: 0;
+      max-width: none;
+    }
+
+    .caption h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .caption span {
+      font-size: 24px;
+    }
+
+    /********************** content ***********************/
+    .content-box {
+      margin-bottom: 30px;
+    }
+
+    .content-box .box-1 {
+      padding-bottom: 30px;
+      min-height: 380px;
+    }
+
+    /********************** small slider in motobike, about, contact pages **********************/
+    .header {
+      
+      margin: 60px auto 50px;
+    }
+
+    .heading {
+      background: #000;
+      border-right: 6px solid #f3542d;
+      color: #fff;
+      display: inline-block;
+      font-size: 36px;
+      font-weight: normal;
+      height: 60px;
+      line-height: 42px;
+      padding: 10px 20px;
+      position: relative;
+      text-transform: uppercase;
+      transform: rotate(0deg) scale(1.003) skew(-14deg) translate(0px);
+      transform-style: flat;
+    }
+
+    .heading span {
+      display: block;
+      transform: rotate(0deg) scale(1.003) skew(14deg) translate(0px);
+      transform-style: flat;
+    }
+
+    /*********************  **********************/
+    .content-box .item {
+      padding: 10px 0;
+    }
+
+    .zoom-container {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      width: 100% !important;
+    }
+
+    .content-box .item img {
+      display: block;
+      width: 100% !important;
+      height: auto;
+      transition: all 0.5s ease;
+    }
+
+    .content-box .item .item-content {
+      background: #fff;
+      padding: 25px;
+      border: 1px solid #ddd;
+    }
+
+    .content-box .item span {
+      font-size: 15px;
+      font-weight: 500;
+      color: #000;
+    }
+
+    .content-box .item:hover .zoom-container img {
+      transform: scale(1.25) rotate(5deg);
+    }
+
+    .content-box .item:hover .item-content {
+      background: #f3542d;
+      color: #fff;
+      transition: all 600ms ease;
+    }
+
+    .content-box .item:hover .item-content p,
+    .content-box .item:hover .item-content span {
+      color: #fff;
+    }
+
+    .content-box .item:hover a.btn {
+      color: #fff;
+      border-color: #fff;
+    }
+
+    /*********************  **********************/
+    .content-box.box-2 {
+      background: url(images/bg-2.jpg);
+      padding: 40px 0;
+      text-align: center;
+      min-height: 380px;
+      color: #fff !important;
+    }
+
+    .content-box.box-2 p {
+      color: #fff;
+    }
+
+    /*********************  **********************/
+    .content-box.box-3 .post {
+      background: #f1f1f1;
+      color: #3f3f3f;
+      margin-bottom: 30px;
+      border: 1px solid #fff;
+    }
+
+    .content-box.box-3 .post img {
+      max-height: 440px;
+      width: 100%;
+      border: none;
+    }
+
+    .content-box.box-3 .post .wrapper {
+      padding: 60px 60px 20px 60px;
+      text-align: center;
+    }
+
+    .post:after,
+    .post:before,
+    section:after,
+    section:before,
+    article:after,
+    article:before {
+      clear: both;
+      content: " ";
+      display: block;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
+
+    /*********************  **********************/
+    .content-box.box-4 {
+      background: url(images/bg-3.jpg) fixed 0 0;
+      min-height: 380px;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    /*********************  **********************/
+    .content-box.box-5 .item {
+      border-right: 1px solid #ccc;
+      padding-right: 30px;
+      min-height: 380px;
+    }
+
+    /*************** footer ********************/
+    .maps {
+      margin: 30px 0;
+    }
+
+    iframe {
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      background: #f3542d;
+    }
+
+    footer a {
+      color: #fff;
+    }
+
+    .wrap-footer {
+      color: #fff;
+      font-size: 13px;
+      padding: 30px 20px;
+    }
+
+    .wrap-footer h3 {
+      margin-bottom: 10px;
+    }
+
+    /******************** motobike page  **********************/
+    .sub-header {
+      background: url(images/bg-4.jpg);
+      min-height: 150px;
+      padding: 35px 10px 0;
+      color: #fff;
+      text-shadow: 0 1px 0 #000;
+      margin-bottom: 50px;
+    }
+
+    .sub-header h1 {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    article {
+      display: inline-block;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+    }
+
+    article img {
+      display: inline-block;
+      float: left;
+      margin-right: 15px;
+      border: 1px solid #777;
+    }
+
+    article .art-header h3 {
+      font-size: 25px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    article .art-header a:hover {
+      text-decoration: none;
+    }
+
+    /******************** sidebar in motobike page  **********************/
+    .wrap-sidebar {
+      margin: 0px 10px;
+    }
+
+    .widget {
+      margin-bottom: 30px;
+      padding: 5px 25px 10px;
+    }
+
+    .wid-meta ul li {
+      font-size: 16px;
+    }
+
+    .wid-content {
+      padding: 10px 0;
+    }
+
+    .wid-archive select {
+      margin: 5px 0;
+      height: 40px;
+      width: 100%;
+      padding-left: 10px;
+      font-family: "noto serif";
+      font-size: 16px;
+      background-color: #e9e9e9;
+      color: #777;
+      border: none;
+    }
+
+    /******************* about **********************/
+    blockquote {
+      quotes: none;
+    }
+
+    article .entry-title {
+      margin: 10px 0;
+    }
+
+    article .entry-title h1 {
+      line-height: 1.2;
+      font-size: 38px;
+    }
+
+    article .art-content blockquote {
+      border-left: 3px solid #1c7791;
+      font-size: 18px;
+      margin: 0 50px;
+      font-style: italic;
+      color: #666;
+      padding-left: 20px;
+    }
+
+    article .art-content ol {
+      float: left;
+      text-align: justify;
+      margin: 10px 50px;
+      font-size: 16px;
+      list-style: circle;
+    }
+
+    /******************* form **************************/
+    #ff label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    #ff input,
+    textarea {
+      display: block;
+      width: 100%;
+      border-radius: 4px;
+      color: #333;
+      padding: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+    }
+
+    #ff textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    #ff .btn {
+      display: inline-block;
+      background: #f3542d;
+      color: #fff;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 16px;
+      text-transform: uppercase;
+      border: 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #ff .btn:hover {
+      background: #d9432c;
+    }
+
+    /******************** Responsive Media Queries **********************/
+
+    /* Mobile view styles */
+    @media only screen and (max-width: 480px) {
+      body {
+        font: 12px/20px Arial;
+      }
+
+      .menu {
+        float: none;
+        text-align: center;
+      }
+
+      .menu ul {
+        padding: 0;
+      }
+
+      .menu ul li {
+        display: inline-block;
+        float: none;
+      }
+
+      .menu ul li a {
+        padding: 10px;
+        display: block;
+      }
+
+      .slider {
+        height: 300px;
+      }
+
+      .caption h1 {
+        font-size: 20px;
+      }
+
+      .caption span {
+        font-size: 16px;
+      }
+
+      .content-box {
+        margin-bottom: 15px;
+      }
+
+      .content-box .item {
+        padding: 5px 0;
+      }
+
+      .content-box .item img {
+        width: 100%;
+        height: auto;
+      }
+
+      .content-box.box-2,
+      .content-box.box-3,
+      .content-box.box-4 {
+        padding: 20px 0;
+      }
+
+      .content-box.box-2 p {
+        font-size: 14px;
+      }
+
+      .content-box.box-3 .post {
+        padding: 20px;
+      }
+
+      footer,
+      .wrap-footer {
+        padding: 15px 10px;
+      }
+
+      .sub-header {
+        padding: 20px 10px;
+      }
+
+      .sub-header h1 {
+        font-size: 22px;
+      }
+
+      article img {
+        width: 100%;
+        height: auto;
+      }
+
+      .widget {
+        padding: 5px 10px;
+      }
+
+      #ff input,
+      #ff textarea {
+        font-size: 14px;
+      }
+
+      #ff .btn {
+        width: 100%;
+      }
+    }
+
+    /* Tablet view styles */
+    @media only screen and (min-width: 481px) and (max-width: 768px) {
+      body {
+        font: 13px/22px Arial;
+      }
+
+      .menu {
+        float: none;
+        text-align: center;
+      }
+
+      .menu ul li {
+        display: inline-block;
+        float: none;
+      }
+
+      .menu ul li a {
+        padding: 15px;
+      }
+
+      .slider {
+        height: 400px;
+        
+      }
+
+      .caption h1 {
+        font-size: 28px;
+      }
+
+      .caption span {
+        font-size: 18px;
+      }
+
+      .content-box {
+        margin-bottom: 20px;
+      }
+
+      .content-box .item {
+        padding: 10px 0;
+      }
+
+      .content-box .item img {
+        width: 100%;
+        height: auto;
+      }
+
+      .content-box.box-2,
+      .content-box.box-3,
+      .content-box.box-4 {
+        padding: 30px 0;
+      }
+
+      .content-box.box-2 p {
+        font-size: 16px;
+      }
+
+      .content-box.box-3 .post {
+        padding: 30px;
+      }
+
+      footer,
+      .wrap-footer {
+        padding: 20px 15px;
+      }
+
+      .sub-header {
+        padding: 25px 15px;
+      }
+
+      .sub-header h1 {
+        font-size: 28px;
+      }
+
+      article img {
+        width: 100%;
+        height: auto;
+      }
+
+      .widget {
+        padding: 10px 15px;
+      }
+
+      #ff input,
+      #ff textarea {
+        font-size: 15px;
+      }
+
+      #ff .btn {
+        width: auto;
+      }
+    }
+
+    /* carousel section */
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .carousel-slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    button.prev,
+    button.next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    button.prev {
+      left: 10px;
+    }
+
+    button.next {
+      right: 10px;
+    }
+    .navbar-custom {
+      display: flex;
+      align-items: flex-start;
+      font-size: 16px;
+    }
+    .search-form {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-form input[type="text"] {
+      padding: 5px;
+      font-size: 16px;
+      border: 1px solid;
+      border-radius: 4px;
+    }
+
+    .search-form button {
+      padding: 5px 10px;
+      background-color: #555;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .search-form button:hover {
+      background-color: #777;
+    }
+
+    /* footer */
+
+    .wrap-footer {
+  background-color: #f3542d;
+  color: #ffffff;
+  padding: 40px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.footer-content h3 {
+  color: #000000; /* Gold color for headings */
+  margin-bottom: 15px;
+  transition: transform 0.3s;
+  font-weight: bold;
+}
+
+.footer-content h3:hover {
+  transform: scale(1.05);
+}
+
+.footer-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-content ul li {
+  margin: 8px 0;
+  transition: color 0.3s;
+}
+
+.footer-content ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-content ul li a:hover {
+  color: #f8c74d; /* Gold color on hover */
+  text-decoration: underline;
+}
+
+.btn-primary {
+  background-color: #007bff; /* Bootstrap primary color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-bottom a {
+  color: #f8c74d; /* Gold color for links */
+}
+
+/* icons */
+.social-media {
+  text-align: center;
+
+}
+
+.social-media h3 {
+  color: #000000; 
+  margin-bottom: 15px;
+  font-weight: bold;
+  transition: transform 0.3s;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between icons */
+}
+
+.social-icons a {
+  color: #ffffff; /* Icon color */
+  font-size: 24px; /* Icon size */
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #f8c74d; /* Gold on hover */
+}
+
+
+  </style>
+
+  <body>
+    <main>
+      <!------------------------ header ----------------------->
+      <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-light">
+        <div class="container">
+          <a href="index.html" class="logo" style="margin-bottom: 5px">
+            <img src="images/logo.png" alt="Logo" class="img-fluid w-50" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#nav-collapse"
+            aria-controls="nav-collapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon bg-dark"></span>
+          </button>
+          <div id="nav-collapse" class="collapse navbar-collapse">
+            <div class="navbar-nav ms-auto pl-3 navbar-custom">
+              <a href="Categories.html" class="nav-link text-dark">Categories</a>
+              <a href="blog.html" class="nav-link text-dark">Blog</a>
+              <a href="about-us.html" class="nav-link text-dark">About</a>
+              <a href="contact-us.html" class="nav-link text-dark"
+                >Contact</a
+              >
+              <a href="faq.html" class="nav-link text-dark">FAQ</a>
+              <a href="cart.html" style="color: black; font-size: 18px">
+                <button
+                  type="button"
+                  style="
+                    border: 0px;
+                    background-color: transparent;
+                    padding-bottom: 9px;
+                    margin-top: 5px;
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-bag-check-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0m-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"
+                    />
+                  </svg>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!------------------------ slider ----------------------->
+
+      <section class="mt-5">
+        <!-- <div class="slider">
+          <img src="images/slideshow-image1.jpg" />
+          <div class="caption">
+            <h1>BHOOM Dealers</h1>
+            <span>Lorem ipsum dolor sit amet</span>
+          </div>
+        </div> -->
+        <div class="carousel">
+          <div class="carousel-slides">
+            <div class="slide">
+              <img src="images/slideshow-image1.jpg" alt="Slide 1" />
+             
+            </div>
+            <div class="slide">
+              <img src="images/slideshow-image2.jpg" alt="Slide 2" />
+            </div>
+            <div class="slide">
+              <img src="images/slideshow-image3.jpg" alt="Slide 3" />
+            </div>
+          </div>
+          <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+          <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+
+      </section>
+
+      <!-- search bar -->
+      <section class="search-bar">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search motorcycles">
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- search bar -->
+
+      <center>
+        <section class="search-results" id="searchResults"></section>
+        <div class="container">
+            <h2>Search Results</h2>
+            <div id="resultsContainer"></div>
+        </div>
+    </section>
+      </center>
+
+      <!------------------------ content area of home page ----------------------->
+
+      <section>
+        <!------------------------  ----------------------->
+
+        <section class="content-box box-1">
+          <div class="container">
+            <div class="header">
+              <center>
+                <h2 class="heading">
+                  <span>Featured</span>
+                </h2>
+              <p>
+                We offer great vehicle services for our customers round the
+                clock.
+              </p></center>
+            </div>
+
+            <div class="row">
+              <div class="adjust-1">
+                <div class="wrap-col item">
+                  <div class="zoom-container">
+                    <img src="images/banner-img1.jpg" />
+                  </div>
+                  <div class="item-content">
+                    <span
+                      >THE PAIN OF HIMSELF HAS BEEN LOVED, CONSEC TEETUER
+                      ADIPECPP IT.</span
+                    >
+                    <p>
+                      Let him understand that I will omit these first, because,
+                      for the satisfaction of my desire, I hardly need them. And
+                      even what we read, the Greek electra would occur to these.
+                      Hardly but tation witty attacks and all the right of these
+                      antiopus.
+                    </p>
+                    
+                  </div>
+                </div>
+              </div>
+
+              <div class="adjust-1">
+                <div class="wrap-col item">
+                  <div class="zoom-container">
+                    <img src="images/banner-img2.jpg" />
+                  </div>
+                  <div class="item-content">
+                    <span
+                      >THE PAIN OF HIMSELF HAS BEEN LOVED, CONSEC TEETUER
+                      ADIPECPP IT.</span
+                    >
+                    <p>
+                      Let him understand that I will omit these first, because,
+                      for the satisfaction of my desire, I hardly need them. And
+                      even what we read, the Greek electra would occur to these.
+                      Hardly but tation witty attacks and all the right of these
+                      antiopus.
+                    </p>
+                   
+                  </div>
+                </div>
+              </div>
+
+              <div class="adjust-1">
+                <div class="wrap-col item">
+                  <div class="zoom-container">
+                    <img src="images/banner-img3.jpg" />
+                  </div>
+                  <div class="item-content">
+                    <span
+                      >THE PAIN OF HIMSELF HAS BEEN LOVED, CONSEC TEETUER
+                      ADIPECPP IT.</span
+                    >
+                    <p>
+                      Let him understand that I will omit these first, because,
+                      for the satisfaction of my desire, I hardly need them. And
+                      even what we read, the Greek electra would occur to these.
+                      Hardly but tation witty attacks and all the right of these
+                      antiopus.
+                    </p>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!------------------------  ----------------------->
+
+        <section class="content-box box-2">
+          <div class="container">
+            <div class="row">
+              <div class="header">
+                <h2 class="heading">
+                  <span>Welcome</span>
+                </h2>
+                <p>
+                  But in order that you may see whence every one is born in
+                  error, the voluptuousness accuses the pain of those who praise
+                  it. <br />
+                  If you see whence every man is born in error, they accuse him
+                  of the pain that he praises. I will open the whole thing, and
+                  those very things which I have said.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!------------------------  ----------------------->
+
+        <section class="content-box box-3">
+          <div class="container">
+            <div class="row">
+              <div class="header">
+                <center>
+                  <h2 class="heading">
+                    <span>Autoimage</span>
+                  </h2>
+                </center>
+              </div>
+
+              <div class="post">
+                <div class="adjust-2">
+                  <img src="images/23.jpg" />
+                </div>
+
+                <div class="adjust-2">
+                  <div class="wrapper">
+                    <h3>The title on the article</h3>
+                    <p>
+                      The customer is very important, the customer will be
+                      followed by the customer. Some cartoon author. But the
+                      free layer who is convenient for me and accepts it for
+                      Lacinia. Morbi's makeup is vulputate but it's taste.
+                    </p>
+                    <!-- <a class="btn" href="#">More details</a> -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="post">
+                <div class="adjust-2 f-right">
+                  <img src="images/24.jpg" />
+                </div>
+
+                <div class="adjust-2">
+                  <div class="wrapper">
+                    <h3>The title on the article</h3>
+                    <p>
+                      The customer is very important, the customer will be
+                      followed by the customer. Some cartoon author. But the
+                      free layer who is convenient for me and accepts it for
+                      Lacinia. Morbi's makeup is vulputate but it's taste.
+                    </p>
+                    <!-- <a class="btn" href="#">More details</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!------------------------  ----------------------->
+
+        <section class="content-box box-4">
+          <div class="container">
+            <div class="row">
+              <div class="header">
+                <h2 class="heading">
+                  <span>service</span>
+                </h2>
+                <div>
+                  <div class="adjust-3">
+                    <div class="wrap-col item">
+                      <h3>Servicing And Repair</h3>
+                      <p>
+                        We have an expert team to provide two wheeler repair and
+                        services.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="adjust-3">
+                    <div class="wrap-col item">
+                      <h3>Denting/Painting</h3>
+                      <p>
+                        We provide denting and painting services for your two
+                        wheeler.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="adjust-3">
+                    <div class="wrap-col item">
+                      <h3>Repair Batteries</h3>
+                      <p>
+                        We have quality checked batteries to give a long lasting
+                        service.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="adjust-3">
+                    <div class="wrap-col item">
+                      <h3>Minor Repair</h3>
+                      <p>
+                        We have expert team for repairing minor details of your
+                        two wheeler.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!------------------------  ----------------------->
+      </section>
+
+  <!------------------------ footer ----------------------->
+  <footer>
+    <div class="wrap-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="contact-info col-sm-12 col-md-4">
+            <h3>Contact Us</h3>
+            <span>Phone: +80 888 88 8888</span><br />
+            <span>Email: info@cardeakler.com</span><br />
+            <span>Address: Ring Road, Light City</span><br />
+            <a href="contact-us.html">
+              <button class="btn btn-primary mt-2 mb-3">Get in Touch</button>
+            </a>
+          </div>
+  
+          <div class="related-content col-sm-12 col-md-4">
+            <h3>Related Content</h3>
+            <ul>
+              <li><a href="blog.html">Latest Blog Posts</a></li>
+              <li><a href="faq.html">Frequently Asked Questions</a></li>
+            </ul>
+          </div>
+  
+          <div class="explore col-sm-12 col-md-4">
+            <h3>Explore</h3>
+            <ul>
+              <li><a href="cart.html">My Cart</a></li>
+              <li><a href="contact-us.html">Contact Support</a></li>
+              <li><a href="Categories.html">Browse Categories</a></li>
+              <li><a href="about-us.html">About Us</a></li>
+            </ul>
+          </div>
+          <div class="social-media col-sm-12 col-md-4">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="https://www.facebook.com" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://twitter.com" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://www.instagram.com" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+  
+        
+  
+        <div class="footer-bottom">
+          <span><strong>Copyright 2024 - <a href="#">Motorcycle Dealership</a></strong></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+    </main>
+    <script>
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        const slides = document.querySelectorAll(".slide");
+        const totalSlides = slides.length;
+
+        if (index >= totalSlides) {
+          currentSlide = 0;
+        } else if (index < 0) {
+          currentSlide = totalSlides - 1;
+        } else {
+          currentSlide = index;
+        }
+
+        const offset = -currentSlide * 100; // Move to the left
+        document.querySelector(
+          ".carousel-slides"
+        ).style.transform = `translateX(${offset}%)`;
+      }
+
+      function moveSlide(step) {
+        showSlide(currentSlide + step);
+      }
+
+      // Initial display
+      showSlide(currentSlide);
+
+      // Optional: Automatic slide change
+      setInterval(() => {
+        moveSlide(1);
+      }, 5000); // Change slide every 5 seconds
+    </script>
+    
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const resultsContainer = document.getElementById('resultsContainer');
+
+        // Sample data (you would typically fetch this from a server)
+        const motorcycles = [
+            { name: "Cruiser", category: "Cruisers", image: "https://bd.gaadicdn.com/processedimages/source/6664289233f6a.jpg" },
+            { name: "Sport Bike", category: "Sport Bikes", image: "https://www.datocms-assets.com/119921/1714134052-top-10-ten-sportsbikes-price-spec_04.jpg?auto=format&w=800" },
+            { name: "Dirt Bike", category: "Dirt Bikes", image: "https://i0.wp.com/www.asphaltandrubber.com/wp-content/uploads/2017/05/2018-KTM-250-300-EXC-TPI-dirt-bike316.jpg?fit=3600%2C2404&ssl=1" },
+            { name: "Retro Bike", category: "Retro Bikes", image: "https://imgd.aeplcdn.com//642x361//n/cw/ec/163465/triumph-speed-400-left-front-three-quarter2.jpeg?isig=0&q=75" },
+            { name: "Adventure Bike", category: "Adventure Bikes", image: "https://www.bmw-motorrad.in/content/dam/bmwmotorradnsc/marketIN/bmw-motorrad_in/multiimages/nsc-master-r1250gs-adventure-P0N2E_2560x1440.jpg.asset.1709035927213.jpg" },
+            { name: "Racing Bike", category: "Racing Bikes", image: "https://imgd.aeplcdn.com/664x374/bw/ec/26274/Kawasaki-KLX-110-Side-86106.jpg?v=201711021421&q=80" }
+        ];
+
+        searchInput.addEventListener('input', function () {
+            const query = this.value.toLowerCase();
+            if (query.length > 2) {
+                const filteredResults = motorcycles.filter(bike => 
+                    bike.name.toLowerCase().includes(query) || 
+                    bike.category.toLowerCase().includes(query)
+                );
+                displayResults(filteredResults);
+            } else {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        function displayResults(results) {
+            resultsContainer.innerHTML = '';
+            if (results.length > 0) {
+                results.forEach(bike => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+                    resultItem.innerHTML = `
+                       <a href="categories.html" style="text-decoration: none;">
+                         <img src="${bike.image}" alt="${bike.name}" style="width: 100px; height: auto;">
+                        <h3>${bike.name}</h3>
+                        <p>Category: ${bike.category}</p>
+                        </a>
+                        
+                    `;
+                    resultsContainer.appendChild(resultItem);
+                });
+                searchResults.style.display = 'block';
+            } else {
+                searchResults.style.display = 'none';
+            }
+        }
+    });
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
